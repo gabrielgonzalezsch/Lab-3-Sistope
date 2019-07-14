@@ -82,5 +82,28 @@ int main(int argc, char** argv){
   }
   printf("\n");
 
+
+  leerFicheroEntradaYGuardarLlamadas(nombreFileSubida);
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
