@@ -27,14 +27,14 @@ typedef struct Ascensor{
   int capacidad_pasajeros; // Capacidad total de pasajeros que entran en el ascensor
   int cantidad_pasajeros; //  Cantidad de pasajeros actual en el ascensor
   int estado;   // si se encuentra inactivo '0' o activo '1'
-  double FS; // Variable de valor que influye en el llamado(Figure of suitability)
+  double fs; // Variable de valor que influye en el llamado(Figure of suitability)
   int* llamadas; // Arreglo de numeros con las llamadas
   int* destinos_Iniciales;
   int* destinos_Finales;
   double tiempoDeEspera;
   double tiempoDeViaje;
   int* pisos_recorridos;
-  int Carga_de_pasajeros;  // Descargando '0' , Cargando '1'
+  int carga_de_pasajeros;  // Descargando '0' , Cargando '1'
   double tiempoDeCargaPasajeros;
   double tiempoDeDescargaPasajeros;
   double tiempoInactivo;

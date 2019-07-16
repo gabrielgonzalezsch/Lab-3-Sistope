@@ -73,3 +73,55 @@ Llamada** leerFicheroEntradaYGuardarLlamadas(char* nombre){
 
   return llamadas;
 }
+
+Ascensor** inicializarAscensores(num_ascensores){
+
+	Ascensor** ascensores = (Ascensor**) malloc(sizeof(Ascensor*) * num_ascensores);
+
+	for(int i = 0; i < num_ascensores; i++){
+		ascensores[i].id = i;
+		ascensores[i].piso_actual = 1;
+		ascensores[i].direccion = 1;
+		ascensores[i].capacidad_pasajeros = 20;
+		ascensores[i].cantidad_pasajeros = 0;
+		ascensores[i].estado = 0;
+		ascensores[i].fs = 0.0;
+		ascensores[i].llamadas = (int*) malloc(sizeof(int));
+		ascensores[i].destinos_Iniciales = (int*) malloc(sizeof(int));
+		ascensores[i].destinos_Finales = (int*) malloc(sizeof(int));
+		ascensores[i].tiempoDeEspera = 0.0;
+		ascensores[i].tiempoDeViaje = 0.0;
+		ascensores[i].pisos_recorridos = 
+		ascensores[i].carga_de_pasajeros = -1;
+		ascensores[i].tiempoDeCargaPasajeros = 0.0;
+		ascensores[i].tiempoDeDescargaPasajeros = 0.0;
+		ascensores[i].tiempoInactivo = 0.0;
+		ascensores[i].cant_llamadas_atendidas = 0;
+		ascensores[i].sector = 0;
+	}
+
+	return ascensores;
+}
+
+void asignarLlamadas(Ascensor** ascensores,Llamada** llamadasSubida,Llamada** llamadasBajada,Llamada** llamadasOrdinario){
+	
+	int i = 0;
+	while(llamadasSubida[i] != NULL){
+		i++;
+	}
+
+	int j = 0;
+	while(llamadasBajada[j] != NULL){
+		j++;
+	}
+
+	int z = 0;
+	while(llamadasOrdinario[z] != NULL){
+		z++;
+	}
+
+	int largoTotal = i + j + z;
+	
+	printf("largo total de los archivos: %d", largoTotal);
+
+}
