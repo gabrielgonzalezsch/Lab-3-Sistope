@@ -89,7 +89,7 @@ int main(int argc, char** argv){
 
 	Ascensor** ascensores = inicializarAscensores(num_ascensores);
 
-	asignarLlamadas(ascensores, llamadasSubida, llamadasBajada, llamadasOrdinario);
+	asignarLlamadas(ascensores, llamadasSubida, llamadasBajada, llamadasOrdinario, num_ascensores, num_pisos);
 
 	return 0;
 }
