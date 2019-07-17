@@ -86,14 +86,18 @@ int main(int argc, char** argv){
 	printf("\n");
 
 
+	//Se leen los archivos de entrada
 	Llamada** llamadasSubida = leerFicheroEntradaYGuardarLlamadas(nombreFileSubida,1);
 	Llamada** llamadasBajada = leerFicheroEntradaYGuardarLlamadas(nombreFileBajada,2);
 	Llamada** llamadasOrdinario = leerFicheroEntradaYGuardarLlamadas(nombreFileOrdinario,3);
 
+	//Se unen los 3 archivos en una lista de llamadas
   Llamada** llamadas = unirLlamadas(llamadasSubida, llamadasBajada, llamadasOrdinario);
 
+	//Se calcular el largo de la lista
   int largoTotal = calcularLargoTotal(llamadasSubida, llamadasBajada, llamadasOrdinario);
 
+	//Se crea he inicializa la lista de ascensores
   Ascensor** ascensores = (Ascensor**) malloc(sizeof(Ascensor*)*num_ascensores);
 
   for (int i = 0; i < num_ascensores; i++) {
@@ -102,19 +106,24 @@ int main(int argc, char** argv){
     ascensores[i] = consAscensor(i+1);
   }
 
+	//Se itera sobre la lista de llamdas
   Llamada* aux;
   while (largoTotal > 0) {
     aux = buscarLlamada(llamadas, largoTotal, tiempo);
     if (aux != NULL) {
 			printf("vuelta: %d\n", largoTotal);
+			//algoritmo 1
       nearestCar(ascensores, aux, num_pisos, num_ascensores);
+			//Eliminar la llamada ya atendida
       llamadas = eliminarLlamada(llamadas, largoTotal, aux);
     }
     for (int i = 0; i < num_ascensores; i++) {
 			printf("accionando %d\n", i);
+			//Actualiza los datos del ascensor
       accion(ascensores[i], llamadas, largoTotal);
     }
     tiempo++;
+		//Actualiza los estados de espera de los demas ascensores
 		actualizarEsperas(ascensores,  tiempo,  num_ascensores);
     largoTotal--;
   }

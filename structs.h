@@ -6,7 +6,7 @@
 #include <string.h>
 
 
-
+//Estructura de las llamadas de ascensores
 typedef struct Llamada{
   int id;
   int piso_inicial;
@@ -19,6 +19,7 @@ typedef struct Llamada{
   int tipo; // 1: subida, 2: bajada, 3: ordinario
 } Llamada;
 
+//Estructura de los ascensores
 typedef struct Ascensor{
   int id;
   int posicion;

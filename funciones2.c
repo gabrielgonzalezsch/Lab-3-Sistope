@@ -7,7 +7,7 @@
 
 
 //Entrada: Nombre del fichero con las llamadas respectivas de los ascensores
-//Funcionamiento: Funciona que guarda los llamados de los ascensores en una estrcutura;
+//Funcionamiento: Funcion que guarda los llamados de los ascensores en una estrcutura
 //Salida: Estructura de Llamadas
 Llamada** leerFicheroEntradaYGuardarLlamadas(char* nombre, int tipo){
   // ############################################### Leer archivo Y guardar Llamados ###########################################################################
@@ -76,6 +76,9 @@ Llamada** leerFicheroEntradaYGuardarLlamadas(char* nombre, int tipo){
   return llamadas;
 }
 
+//Entrada: Entero con el id que se le ortorgara al ascensor
+//Funcionamiento: Funcion constructora de la estructura ascensor
+//Salida: Una instancia de ascensor
 Ascensor* consAscensor (int id){
   Ascensor* aux;
 
@@ -105,6 +108,9 @@ Ascensor* consAscensor (int id){
 
 }
 
+//Entrada: Tres listas de llamadas, una por cada archivo de entrada
+//Funcionamiento: Funcion que calcula el largo de las tres listas juntas
+//Salida: Entero con el largo
 int calcularLargoTotal(Llamada** llamadasSubida, Llamada** llamadasBajada, Llamada** llamadasOrdinario){
 
   int x = 0;
@@ -125,6 +131,9 @@ int calcularLargoTotal(Llamada** llamadasSubida, Llamada** llamadasBajada, Llama
   return x + y + z;
 }
 
+//Entrada: Tres listas de llamadas
+//Funcionamiento: Funcion que une las tres listas de llamadas en una sola
+//Salida: Una lista de llamadas con las tres iniciales dentro
 Llamada** unirLlamadas(Llamada** llamadasSubida, Llamada** llamadasBajada, Llamada** llamadasOrdinario){
 
   int largo = calcularLargoTotal(llamadasSubida, llamadasBajada, llamadasOrdinario);
@@ -183,6 +192,9 @@ Llamada** unirLlamadas(Llamada** llamadasSubida, Llamada** llamadasBajada, Llama
    return llamadas;
 }
 
+//Entrada: Lista de llamadas, largo de la lista de llamadas y el tiempo actual del programa
+//Funcionamiento: Funcion que busca entre todas las llamadas si es que existe alguna en ese tiempo dado
+//Salida: Si encuentra una llamada en ese tiempo, la retorna, si no, retorna nulo
 Llamada* buscarLlamada(Llamada** llamadas, int largo, int tiempo){
 
   for (int i = 0; i < largo; i++) {
@@ -194,6 +206,9 @@ Llamada* buscarLlamada(Llamada** llamadas, int largo, int tiempo){
   return NULL;
 }
 
+//Entrada: Una instancia de Ascensor y la llamada a agregar
+//Funcionamiento: Funcion que agrega al final la llamada de entrada a la lista de llamdas interna de Ascensor
+//Salida: Lista nueva de llamadas
 Llamada** agregarLlamada(Ascensor* ascensor, Llamada* llamada){
 
   int largo = ascensor -> llamadas_atendidas + 1;
@@ -230,6 +245,9 @@ Llamada** agregarLlamada(Ascensor* ascensor, Llamada* llamada){
   return llamadas;
 }
 
+//Entrada: Una instancia de Ascensor y la llamada a agregar
+//Funcionamiento: Funcion que agrega al inicio la llamada de entrada a la lista de llamdas interna de Ascensor
+//Salida: Lista nueva de llamadas
 Llamada** agregarLlamadaInicio(Ascensor* ascensor, Llamada* llamada){
   Llamada** llamadas = (Llamada**) malloc(sizeof(Llamada*) * (ascensor -> llamadas_atendidas+1));
 
@@ -269,6 +287,9 @@ Llamada** agregarLlamadaInicio(Ascensor* ascensor, Llamada* llamada){
 
 }
 
+//Entrada: Lista de ascensores, la llamada a atender, el numero de pisos y el numero de ascensores
+//Funcionamiento: Primer algoritmo que se debe implementar el cual busca el carro mas cercano para atender la llamada por medio del calculo de FS
+//Salida: void
 void nearestCar(Ascensor** ascensores, Llamada* llamada, int num_pisos, int num_ascensores){
   int fs = 1;
   int sameFloor = 0;
@@ -343,6 +364,9 @@ void nearestCar(Ascensor** ascensores, Llamada* llamada, int num_pisos, int num_
 
 }
 
+//Entrada: Lista de llamadas, largo de la lista de llamdas, y la llamada a eliminar
+//Funcionamiento: Funcion que elimina de la lista de llamdas la llamada que entra por parametro
+//Salida: Nueva lista de llamadas
 Llamada** eliminarLlamada(Llamada** llamadas, int largo, Llamada* llamada){
 
   Llamada** out = (Llamada**) malloc(sizeof(Llamada*) * (largo - 1));
@@ -367,6 +391,9 @@ Llamada** eliminarLlamada(Llamada** llamadas, int largo, Llamada* llamada){
   return out;
 }
 
+//Entrada: Una instancia de Ascensor y el largo de la lista de destinos finales
+//Funcionamiento: Funcion que elimina la primera posicion de la lista de desintos finales
+//Salida: Nueva lista de destinos finales
 int** eliminarDestinoFinal(Ascensor* ascensor, int largo){
   int** out = (int**) malloc(sizeof(int*) * (largo - 1));
 
@@ -382,6 +409,9 @@ int** eliminarDestinoFinal(Ascensor* ascensor, int largo){
   return out;
 }
 
+//Entrada: Una instancia de Ascensor y el largo de la lista de destinos finales
+//Funcionamiento: Funcion que agrega al final un elemento a la lista de desintos finales
+//Salida: Nueva lista de destinos finales
 int** agregarDestinoFinal(Ascensor* ascensor, int largo){
   int** out = (int**) malloc(sizeof(int*) * largo + 1);
 
@@ -399,6 +429,9 @@ int** agregarDestinoFinal(Ascensor* ascensor, int largo){
   return out;
 }
 
+//Entrada: Una instancia de Ascensor
+//Funcionamiento: Funcion que calcula el largo de la lista de destinos finales
+//Salida: Entero con el largo de la lista
 int calcularLargoDestino(Ascensor* ascensor){
   int largoDestinos = 0;
   while(ascensor -> destinos_finales[largoDestinos+1] != NULL){
@@ -408,6 +441,9 @@ int calcularLargoDestino(Ascensor* ascensor){
   return largoDestinos;
 }
 
+//Entrada: Lista de llamdas
+//Funcionamiento: Funcion que calcula el largo de la lista de llamadas
+//Salida: Entero con el largo de la lista
 int calcularLargo(Llamada** llamadas){
   int i = 0;
   while (llamadas[i+1] != NULL) {
@@ -416,6 +452,9 @@ int calcularLargo(Llamada** llamadas){
   return i;
 }
 
+//Entrada: Una instancia de ascensor, la lista de llamdas, y el largo de la lista de llamadas
+//Funcionamiento: Funcion que aumenta los contadores de tiempo segun se necesite
+//Salida: void
 void accion (Ascensor* ascensor, Llamada** llamadas, int largoLlamadas){
 
   int largoDestinos = calcularLargoDestino(ascensor);
@@ -542,6 +581,9 @@ void accion (Ascensor* ascensor, Llamada** llamadas, int largoLlamadas){
 
 }
 
+//Entrada: Lista de ascensores, tiempo actual y numero de ascensores
+//Funcionamiento: Funcion que aumenta los tiempos de espera de los ascensores
+//Salida: void
 void actualizarEsperas(Ascensor** ascensores, int tiempo, int num_ascensores){
   int largoLlamadas;
 
