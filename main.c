@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "funciones2.h"
+#include "funciones.h"
 
 
 
