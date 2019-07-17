@@ -1,4 +1,4 @@
 all: padre
 
 padre: main.c
-	gcc main.c funciones.c -o lab3 -lm
+	gcc main2.c funciones2.c -o lab3 -lm
